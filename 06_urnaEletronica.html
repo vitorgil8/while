@@ -1,0 +1,81 @@
+<meta charset="UTF-8">
+<script>
+    /*
+    PROBLEMA: URNA ELETRÔNICA
+    Faça um programa que simule a urna eletrônica.
+    A tela a ser apresentada deverá ser da seguinte forma:
+    As opções são:
+    1. Candidato Joãozinho
+    2. Candidato Mariazinha
+    3. Nulo
+    4. Branco
+    Entre com o seu voto:
+
+    O programa deverá ler os votos dos eleitores e, quando for entrado o número 0, apresentar as seguintes
+    informações:
+    a) O número de votos de cada candidato;
+    b) A porcentagem de votos nulos;
+    c) A porcentagem de votos brancos;
+    d) O candidato vencedor.
+    */
+
+    //ENTRADA
+    let votosJoaozinho = 0;
+    let votosMariazinha = 0;
+    let votosNulos = 0;
+    let votosBrancos = 0;
+    let totalVotos = 0;
+    let voto;
+
+    //PROCESSAMENTO
+    while (true) {
+        voto = parseInt(prompt("As opções são:\n1. Candidato Joãozinho\n2. Candidato Mariazinha\n3. Nulo\n4. Branco\nEntre com o seu voto (0 para encerrar):"));
+        
+        if (voto === 0) {
+            break;
+        }
+        
+        totalVotos++; // Contabiliza o voto
+
+        switch (voto) {
+            case 1:
+                votosJoaozinho++;
+                break;
+            case 2:
+                votosMariazinha++;
+                break;
+            case 3:
+                votosNulos++;
+                break;
+            case 4:
+                votosBrancos++;
+                break;
+            default:
+                alert("Voto inválido! Tente novamente.");
+                totalVotos--; // Não conta como voto válido
+                break;
+        }
+    }
+
+    //SAÍDA
+    alert("Resultados da eleição:\n");
+    alert("Votos para Joãozinho: " + votosJoaozinho);
+    alert("Votos para Mariazinha: " + votosMariazinha);
+    alert("Votos nulos: " + votosNulos);
+    alert("Votos brancos: " + votosBrancos);
+
+    let percentualNulos = (votosNulos / totalVotos) * 100;
+    let percentualBrancos = (votosBrancos / totalVotos) * 100;
+    alert("Porcentagem de votos nulos: " + percentualNulos.toFixed(2) + "%");
+    alert("Porcentagem de votos brancos: " + percentualBrancos.toFixed(2) + "%");
+
+    let vencedor = "";
+    if (votosJoaozinho > votosMariazinha) {
+        vencedor = "Joãozinho";
+    } else if (votosMariazinha > votosJoaozinho) {
+        vencedor = "Mariazinha";
+    } else {
+        vencedor = "Empate entre Joãozinho e Mariazinha";
+    }
+    alert("Candidato vencedor: " + vencedor);
+</script>
